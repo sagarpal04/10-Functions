@@ -1,22 +1,23 @@
 'use strict';
 
-const bookings = [];
-const createBooking = function (
-  flightNum,
-  numPassengers = 1,
-  price = 199 * numPassengers
-) {
-  const booking = {
-    flightNum,
-    numPassengers,
-    price,
-  };
-  console.log(booking);
-  bookings.push(booking);
+const oneWord = function (str) {
+  return str.replaceAll(' ', '');
+};
+const upperFirstWord = function (str) {
+  const [first, ...other] = str.split(' ');
+  return [first.toUpperCase(), ...other].join(' ');
 };
 
-createBooking('LH123');
-createBooking('LH23', 2, 800);
-createBooking('LH123', 2);
-createBooking('LH123', 5);
-createBooking('LH123', undefined, 1000);
+const transformer = function (str, fn) {
+  console.log(`Original string : ${str}`);
+  console.log(`Transformed string : ${fn(str)}`);
+  console.log(`Transformed by : ${fn.name}`);
+};
+transformer('JavaScript is the best! ', oneWord);
+
+const high5 = function () {
+  console.log('👋');
+};
+document.querySelector('body').addEventListener('click', high5);
+
+['Jonas', 'Smith'].forEach(high5);
